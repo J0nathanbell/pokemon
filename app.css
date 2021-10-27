@@ -6,3 +6,17 @@ h1 {
 
   width: 400px;
 }
+
+#results {
+
+  background-color: grey;
+  border-radius: 20px;
+  width: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#results img p h3 {
+}

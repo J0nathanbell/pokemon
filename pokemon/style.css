@@ -1,0 +1,42 @@
+h1 {
+  color: red;
+}
+
+#results {
+  background-color: #ffd76e;
+  border-radius: 20px;
+  width: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image:url("assets/logo_withballs_transparent.png");
+  background-size: 50%;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  margin: 0px;
+  padding: 0px;
+}
+
+#results h2 {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3em;
+  padding: 0px;
+  margin: 0px;
+  font-style: bold;
+  font-weight: bold;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.pokemon {
+  background-color: red;
+  color: red;
+}

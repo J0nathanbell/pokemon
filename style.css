@@ -12,6 +12,7 @@ body {
   flex-direction: column;
 	font-family: 'Lato';
 }
+
 .poke-container{
   display: flex;
   align-items: space-between;

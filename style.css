@@ -114,6 +114,6 @@ letter-spacing: 1px;
   border-radius: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
 }

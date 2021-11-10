@@ -21,8 +21,6 @@ const colors = {
   ghost: '#705898',
   dark: '#705848',
   steel: '#b8b8d0'
-
-
 };
 
 const main_types = Object.keys(colors);
@@ -34,15 +32,17 @@ const fetchPokemons = async () => {
 };
 
 const getPokemon = async (id) => {
-  const url =`https://pokeapi.co/api/v2/pokemon/${id}`
-  const res = await fetch(url);
-  const pokemon = await res.json();
-  const location = await fetch(pokemon.location_area_encounters);
+  const pokemonUrl =`https://pokeapi.co/api/v2/pokemon/${id}`
+  const pokemonRes = await fetch(pokemonUrl);
+  const pokemon = await pokemonRes.json();
+  const locationsRes = await fetch(pokemon.location_area_encounters);
+  const locations = await locationsRes.json();
 
-  createPokemonCard(pokemon, location);
+
+  createPokemonCard(pokemon, locations);
 };
 
-createPokemonCard = (pokemon, location) => {
+createPokemonCard = (pokemon, locations) => {
   // create the div
   const pokemonEl = document.createElement('div');
   // map the types into an array (poketypes)
@@ -56,6 +56,24 @@ createPokemonCard = (pokemon, location) => {
   // capitalise the cards names
   const name = capitalize(pokemon.name);
 
+  locationCreate = () => {
+    array1 = [];
+    spawncreate = locations.forEach(i =>
+      array1.push(i.location_area.name),
+    );
+    if (array1.length < 1) {
+      array1.push("Does not spawn in the wild")
+    };
+    spawn_array = array1.slice(0, 4)
+    const capitalise = spawn_array.map(spawn => capitalize(spawn));
+    spawn_list = capitalise.join(', ');
+    return spawn_list.replace(/-/g, " ");
+  };
+  // location_area.name
+  // for (let i in locations) {
+  //   let place = i.location_area.name
+  //   console.log(place)
+  // };
 
   const pokeInnerHTML =
   `
@@ -75,7 +93,7 @@ createPokemonCard = (pokemon, location) => {
         <div class="info">
           <h3 class="heigh">Height: ${pokemon.height*10}cm</h3>
           <h3 class="weight">Weight: ${pokemon.weight/10}kg</h3>
-          <h3 class="location">Locations: ${location}</h3>
+          <small class="location"><strong>Spawn locations:</strong> ${locationCreate()}</small>
 
           </div>
       </div>

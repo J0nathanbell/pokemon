@@ -16,7 +16,13 @@ const colors = {
   psychic: '#eaeda1',
   flying: '#F5F5F5',
   fighting: '#E6E0D4',
-  normal: '#F5F5F5'
+  normal: '#F5F5F5',
+  ice: '#98d8d8',
+  ghost: '#705898',
+  dark: '#705848',
+  steel: '#b8b8d0'
+
+
 };
 
 const main_types = Object.keys(colors);
@@ -31,10 +37,12 @@ const getPokemon = async (id) => {
   const url =`https://pokeapi.co/api/v2/pokemon/${id}`
   const res = await fetch(url);
   const pokemon = await res.json();
-  createPokemonCard(pokemon);
+  const location = await fetch(pokemon.location_area_encounters);
+
+  createPokemonCard(pokemon, location);
 };
 
-createPokemonCard = (pokemon) => {
+createPokemonCard = (pokemon, location) => {
   // create the div
   const pokemonEl = document.createElement('div');
   // map the types into an array (poketypes)
@@ -47,6 +55,7 @@ createPokemonCard = (pokemon) => {
   pokemonEl.classList.add('pokemon');
   // capitalise the cards names
   const name = capitalize(pokemon.name);
+
 
   const pokeInnerHTML =
   `
@@ -63,7 +72,12 @@ createPokemonCard = (pokemon) => {
         </div>
       </div>
       <div class="flip_card_back" style="background-color:${color};">
-        <h1>Back Info placeholder text</h1>
+        <div class="info">
+          <h3 class="heigh">Height: ${pokemon.height*10}cm</h3>
+          <h3 class="weight">Weight: ${pokemon.weight/10}kg</h3>
+          <h3 class="location">Locations: ${location}</h3>
+
+          </div>
       </div>
     </div>
   </div>

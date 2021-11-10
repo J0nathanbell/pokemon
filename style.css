@@ -107,8 +107,7 @@ letter-spacing: 1px;
 
 /* Style the back side */
 .flip_card_back {
-  background-color: dodgerblue;
-  color: white;
+  color: black;
   transform: rotateY(180deg);
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
   border-radius: 20px;
@@ -116,6 +115,4 @@ letter-spacing: 1px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-
 }

@@ -1,5 +1,5 @@
 const poke_container = document.getElementById('poke-container');
-const pokemon_number = 3;
+const pokemon_number = 10;
 capitalize = (string) => { return string[0].toUpperCase() + string.slice(1) };
 
 const colors = {
@@ -34,28 +34,25 @@ const getPokemon = async (id) => {
   createPokemonCard(pokemon);
 };
 
-styleCard = (type) => {
-  const color = colors[type];
-  const front = document.querySelector(".flip_card_front");
-  front.style.backgroundColor = color;
-  const back = document.querySelector(".flip_card_back");
-  back.style.backgroundColor = color;
-};
-
 createPokemonCard = (pokemon) => {
+  // create the div
   const pokemonEl = document.createElement('div');
+  // map the types into an array (poketypes)
   const poke_types = pokemon.types.map(el => el.type.name);
+  // find the single main type of the pokemon
   const type = main_types.find(type => poke_types.indexOf(type) > -1);
-
+  // use that single main type to deturmin the background colour
+  const color = colors[type];
+  // style the cards
   pokemonEl.classList.add('pokemon');
-
-  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+  // capitalise the cards names
+  const name = capitalize(pokemon.name);
 
   const pokeInnerHTML =
   `
   <div class="flip_card">
     <div class="flip_card_inner">
-      <div class="flip_card_front">
+      <div class="flip_card_front" style="background-color:${color};">
         <div class="image-container">
           <img src="${pokemon.sprites.other['official-artwork'].front_default}">
         </div>
@@ -65,13 +62,14 @@ createPokemonCard = (pokemon) => {
           <small class="type">Type: <span>${capitalize(type)}</span></small>
         </div>
       </div>
-      <div class="flip_card_back"></div>
+      <div class="flip_card_back" style="background-color:${color};">
+        <h1>Back Info placeholder text</h1>
+      </div>
     </div>
   </div>
   `;
   pokemonEl.innerHTML = pokeInnerHTML;
   poke_container.appendChild(pokemonEl);
-  styleCard(type);
 };
 
 fetchPokemons();

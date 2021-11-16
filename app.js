@@ -1,5 +1,14 @@
+
+
+
+
+
+
+
+
+
 const poke_container = document.getElementById('poke-container');
-const pokemon_number = 10;
+const pokemon_number = 40;
 capitalize = (string) => { return string[0].toUpperCase() + string.slice(1) };
 
 const colors = {
@@ -64,7 +73,7 @@ createPokemonCard = (pokemon, locations) => {
     if (array1.length < 1) {
       array1.push("Does not spawn in the wild")
     };
-    spawn_array = array1.slice(0, 4)
+    spawn_array = array1.slice(0, 1)
     const capitalise = spawn_array.map(spawn => capitalize(spawn));
     spawn_list = capitalise.join(', ');
     return spawn_list.replace(/-/g, " ");
@@ -86,12 +95,12 @@ createPokemonCard = (pokemon, locations) => {
         <div class="info">
           <span class="number">#${pokemon.id.toString().padStart(3, '0')}</span>
           <h3 class="name">${name}</h3>
-          <small class="type">Type: <span>${capitalize(type)}</span></small>
+          <small class="type"><span>${capitalize(type)}</span></small>
         </div>
       </div>
       <div class="flip_card_back" style="background-color:${color};">
         <div class="info">
-          <h3 class="heigh">Height: ${pokemon.height*10}cm</h3>
+          <h3 class="height">Height: ${pokemon.height*10}cm</h3>
           <h3 class="weight">Weight: ${pokemon.weight/10}kg</h3>
           <small class="location"><strong>Spawn locations:</strong> ${locationCreate()}</small>
 

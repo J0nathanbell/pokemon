@@ -26,7 +26,6 @@ body {
   width: 160px;
   height:250px;
   border-radius: 20px;
-  /* padding: 20px; */
   text-align: center;
   margin: 10px;
 }
@@ -46,6 +45,10 @@ body {
 }
 .info {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .number {
   background-color: white;
@@ -54,13 +57,21 @@ body {
   padding: 5px 10px;
 }
 .name {
-margin: 15px 0 7px;
 letter-spacing: 1px;
+font-size: 1.5em;
+
 }
 .type {
   font-weight: bolder;
 }
 
+h3 {
+  font-size: 1.5em;
+
+}
+
+.weight, .height {
+}
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip_card {
@@ -103,7 +114,7 @@ letter-spacing: 1px;
   flex-direction: column;
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
   border-radius: 20px;
-
+  padding: 5px;
 }
 
 /* Style the back side */
@@ -114,6 +125,7 @@ letter-spacing: 1px;
   border-radius: 20px;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   flex-direction: column;
+  padding-left: 0.1em;
 }

@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 const poke_container = document.getElementById('poke-container');
 const pokemon_number = 40;
 capitalize = (string) => { return string[0].toUpperCase() + string.slice(1) };
@@ -41,13 +32,14 @@ const fetchPokemons = async () => {
 };
 
 const getPokemon = async (id) => {
+  const pokebits = []
   const pokemonUrl =`https://pokeapi.co/api/v2/pokemon/${id}`
   const pokemonRes = await fetch(pokemonUrl);
   const pokemon = await pokemonRes.json();
   const locationsRes = await fetch(pokemon.location_area_encounters);
   const locations = await locationsRes.json();
-
-
+  pokebits.push(pokemon, locations)
+  console.log(pokebits)
   createPokemonCard(pokemon, locations);
 };
 
@@ -78,11 +70,6 @@ createPokemonCard = (pokemon, locations) => {
     spawn_list = capitalise.join(', ');
     return spawn_list.replace(/-/g, " ");
   };
-  // location_area.name
-  // for (let i in locations) {
-  //   let place = i.location_area.name
-  //   console.log(place)
-  // };
 
   const pokeInnerHTML =
   `
@@ -99,7 +86,10 @@ createPokemonCard = (pokemon, locations) => {
         </div>
       </div>
       <div class="flip_card_back" style="background-color:${color};">
-        <div class="info">
+        <div class="image-container">
+          <img id="back-image" src="${pokemon.sprites.other.dream_world.front_default}">
+        </div>
+          <div class="info">
           <h3 class="height">Height: ${pokemon.height*10}cm</h3>
           <h3 class="weight">Weight: ${pokemon.weight/10}kg</h3>
           <small class="location"><strong>Spawn locations:</strong> ${locationCreate()}</small>
@@ -115,3 +105,7 @@ createPokemonCard = (pokemon, locations) => {
 
 fetchPokemons();
 getPokemon();
+
+
+
+pokemon_search_result
